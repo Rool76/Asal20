@@ -1,0 +1,921 @@
+Gmail	صالحه كبيوتر ‏ <salhhkbywtr@gmail.com>
+(بدون موضوع)
+صالحه فلاح ‏ <asetkss665@gmail.com>	24 نوفمبر 2026 في 6:53 ص
+إلى: salhhkbywtr@gmail.com
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>دفتر خمّن الشخصية</title>
+
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+  * { box-sizing: border-box; }
+
+  body { margin: 0; background: #fff; color: #202124; font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif; padding: env(safe-area-inset-top, 0px) 0 env(safe-area-inset-bottom, 0px); }
+
+  header { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid #e0e0e0; position: sticky; top: 0; background: #fff; z-index: 5; }
+
+  header .logo { width: 28px; height: 28px; border-radius: 4px; background: #f9ab00; display: grid; place-items: center; color: #fff; font-weight: 700; font-family: 'IBM Plex Mono', monospace; }
+
+  header h1 { font-size: 16px; margin: 0; font-weight: 600; }
+
+  header .meta { margin-inline-start: auto; font-size: 12px; color: #5f6368; }
+
+  main { max-width: 980px; margin: 0 auto; padding: 16px 12px 40px; }
+
+  .cell { display: grid; grid-template-columns: 56px 1fr; gap: 8px; margin-bottom: 18px; border-left: 3px solid transparent; padding-inline-start: 4px; }
+
+  .cell:focus-within { border-left-color: #f9ab00; }
+
+  .gutter { display: flex; flex-direction: column; align-items: center; gap: 6px; padding-top: 10px; }
+
+  .counter { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #5f6368; }
+
+  .run { width: 32px; height: 32px; border-radius: 50%; border: 1px solid #dadce0; background: #fff; cursor: pointer; color: #1a73e8; }
+
+  .run:hover { background: #e8f0fe; }
+
+  .run:focus-visible, .btn:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid #1a73e8; outline-offset: 2px; }
+
+  .body { min-width: 0; }
+
+  .code { background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 14px; margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; line-height: 1.6; direction: ltr; text-align: left; white-space: pre; overflow-x: auto; }
+
+  .out { margin-top: 8px; min-height: 8px; }
+
+  .err { color: #c5221f; font-family: 'IBM Plex Mono', monospace; font-size: 13px; direction: ltr; }
+
+  .board { display: flex; gap: 8px; margin-bottom: 12px; }
+
+  .board div { flex: 1; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 8px; text-align: center; font-size: 12px; color: #5f6368; }
+
+  .board b { display: block; font-size: 18px; color: #202124; }
+
+  .quote { font-size: 17px; line-height: 1.8; padding: 12px; background: #f1f3f4; border-radius: 8px; margin-bottom: 12px; }
+
+  .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+  .btn { background: #fff; border: 1px solid #dadce0; border-radius: 8px; padding: 10px; font: inherit; font-size: 14px; cursor: pointer; color: #202124; }
+
+  .btn:hover { background: #e8f0fe; border-color: #1a73e8; }
+
+  .btn.primary { background: #1a73e8; color: #fff; border-color: #1a73e8; font-weight: 600; }
+
+  .btn.primary:hover { background: #1765cc; }
+
+  .ok { color: #137333; font-weight: 600; }
+
+  .bad { color: #c5221f; font-weight: 600; }
+
+  .result { margin-top: 12px; font-size: 14px; line-height: 1.8; }
+
+  .row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; align-items: center; }
+
+  .bar { display: grid; gap: 2px; margin-bottom: 5px; font-size: 12px; color: #5f6368; }
+
+  .track { height: 7px; background: #e8eaed; border-radius: 4px; overflow: hidden; }
+
+  .fill { height: 100%; background: #1a73e8; border-radius: 4px; }
+
+  textarea, select { font: inherit; font-size: 14px; padding: 7px 9px; border: 1px solid #dadce0; border-radius: 6px; background: #fff; color: #202124; }
+
+  textarea { width: 100%; min-height: 70px; resize: vertical; }
+
+  .form-cell { border: 1px dashed #dadce0; border-radius: 8px; padding: 14px; background: #fafafa; }
+
+  label { display: block; font-size: 12px; color: #5f6368; margin: 8px 0 4px; }
+
+  @media (max-width: 560px) { .cell { grid-template-columns: 1fr; } .gutter { flex-direction: row; } }
+
+.tprog { height: 8px; background: #e8eaed; border-radius: 4px; overflow: hidden; margin: 10px 0 14px; }
+
+  .tprog div { height: 100%; background: #1a73e8; width: 0; transition: width .3s ease; }
+
+  .tcell { border: 1px solid #e0e0e0; border-radius: 8px; padding: 14px; margin-bottom: 10px; background: #fff; }
+
+  .tcell.locked { opacity: .5; }
+
+  .tcell.done { border-color: #137333; }
+
+  .tcell h3 { font-size: 15px; margin: 0 0 6px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+  .tcell p { font-size: 14px; line-height: 1.8; margin: 0 0 8px; }
+
+  .tbadge { font-size: 12px; font-family: 'IBM Plex Mono', monospace; color: #5f6368; }
+
+  .tcell.done .tbadge { color: #137333; font-weight: 700; }
+
+  .tcell textarea { width: 100%; min-height: 70px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; direction: ltr; text-align: left; border: 1px solid #dadce0; border-radius: 6px; padding: 8px 10px; }
+
+  .thint, .tout { font-family: 'IBM Plex Mono', monospace; font-size: 13px; direction: ltr; text-align: left; white-space: pre-wrap; word-break: break-all; border-radius: 6px; padding: 10px 12px; margin: 8px 0; display: none; }
+
+  .thint { background: #f1f3f4; }
+
+  .tout { background: #f8f9fa; border-left: 3px solid #137333; }
+
+  .thint.show, .tout.show { display: block; }
+
+</style>
+
+</head>
+
+<body>
+
+
+
+<header>
+
+  <div class="logo">Cb</div>
+
+  <h1>دفتر خمّن الشخصية</h1>
+
+  <div class="meta" id="stat">جاري التحميل...</div>
+
+</header>
+
+
+
+<main>
+
+
+
+  <!-- الخلية 1: البيانات -->
+
+  <section class="cell">
+
+    <div class="gutter"><span class="counter">[1]</span><button class="run" data-run="src-1" aria-label="تشغيل الخلية 1">▶</button></div>
+
+    <div class="body"><pre class="code" data-show="src-1"></pre><div class="out" data-out="src-1"></div></div>
+
+  </section>
+
+  <script type="text/plain" id="src-1">
+
+// ============ الخلية 1: بيانات التدريب وجمل اللعبة ============
+
+// كل صف = [النص, التصنيف]. التصنيفات: brave شجاع، comic كوميدي، sad حزين، worry مهوجس، kafu كفو، neutral محايد
+
+var DATA = [
+
+  ["ابشر بعزك، أنا لها", "brave"], ["ما عليك، أنا أتقدم وأحل المشكلة", "brave"], ["ما يخاف من أي مغامرة ويدخل أول واحد", "brave"],
+
+  ["يتقدم الصفوف في أي موقف صعب", "brave"], ["واثق من نفسه وما يتردد أبداً", "brave"], ["أنا أروح الكهف لحالي ولا أخاف", "brave"],
+
+  ["خلّها عليّ، أنا أتصرف", "brave"], ["ما أحد يوقفني، أنا قدها", "brave"], ["يقدم نفسه للمهمات الخطيرة بكل ثقة", "brave"],
+
+  ["قال: الخوف ما يحل شي، يلا نمشي", "brave"], ["وقت النشبة يفزع أول واحد ويروح", "brave"], ["لما تصير المشكلة يركض قبل الكل", "brave"],
+
+  ["يقول: أنا اللي بروح للمكان الخطر معك", "brave"], ["الكلمة وحدة وهو موجود بالنشبات", "brave"],
+
+  ["😂😂 ما أقدر والله", "comic"], ["💀💀 تقتل ضحك", "comic"], ["تضحك على كل شي وتغير جو الجلسة", "comic"],
+
+  ["دايم ترسل إيموجي 😂", "comic"], ["تحب الفلة والوناسة", "comic"], ["نكتة وحدة منها وكلنا نضحك", "comic"],
+
+  ["ههههه يا رجال انت تموت ضحك", "comic"], ["تذب ذبات تقتل ضحك", "comic"], ["كل ما كانت الجلسة كئيبة تفلها بنكتة", "comic"],
+
+  ["💀 الله يخليك ما تقدر تسكت", "comic"],
+
+  ["الدنيا ما تسوى، عادي تعودت", "sad"], ["تتنهد كثير وتقول عادي", "sad"], ["تسمع أغاني حزينة طول الليل", "sad"],
+
+  ["تحب المطر والشتاء وتحس بالكآبة", "sad"], ["ملامحها هادية وفيها شوية حزن", "sad"], ["قالت: تعبت من كل شي بس ما فيه فايدة", "sad"],
+
+  ["تجلس لحالها وتتذكر اللي راح", "sad"], ["ما عندها حماس وتكتفي بالصمت", "sad"], ["تحس إن الدنيا ثقيلة عليها", "sad"],
+
+  ["دموعها قريبة لما تسمع أغنية قديمة", "sad"],
+
+  ["تخيل لو ما نجحت وش بيصير بعدين؟", "worry"], ["طول الوقت سرحان ويهوجس", "worry"], ["يسهر الليل يفكر في سيناريوهات ما صارت", "worry"],
+
+  ["عيونه تلمع من كثر التفكير", "worry"], ["دايم يقول: تخيل لو صار كذا", "worry"], ["وش بيصير لو الشي خرب؟", "worry"],
+
+  ["يفكر في كل احتمال ويعيش فيه", "worry"], ["شارد وكأنه يحسب سيناريوهات", "worry"], ["يتخيل المشاكل قبل ما تصير", "worry"],
+
+  ["ما يقدر ينام لأنه يفكر في الهواجيس", "worry"],
+
+  ["أنا موجود إذا احتجت شي، لا تتردد", "kafu"], ["اتصلوا عليه الناس وقت الطوارئ وما يتأخر", "kafu"], ["راعي الفزعات، أي أحد يحتاجه يلقاه", "kafu"],
+
+  ["يساعد الكل ويرد على الجميع بأي وقت", "kafu"], ["إذا أحد تعب ينفعه بكل شي", "kafu"], ["ما يتأخر عن أي مساعدة يطلبونها منه", "kafu"],
+
+  ["يحل المشكلة لكل أحد ويرجع يسأل: تبي شي ثاني؟", "kafu"], ["الكل يعرف إنه الملجأ وقت الشدة", "kafu"],
+
+  ["وش تبي نسوي اليوم؟", "neutral"], ["الجو حار شوي اليوم", "neutral"], ["أبغى أكل رز مع دجاج", "neutral"],
+
+  ["الساعة كم الحين؟", "neutral"], ["تعال نروح السوق بعد العصر", "neutral"], ["خلصت الشغل وبروح البيت", "neutral"],
+
+  ["ركبت السيارة وطلعت", "neutral"], ["اشتريت جوال جديد من المحل", "neutral"]
+
+];
+
+
+
+// جمل اللعبة (ما هي في بيانات التدريب)
+
+var PUZZLES = [
+
+  ["ما أحد يقدر يوقف طارق لما يبدأ الشغل الخطير", "brave"],
+
+  ["اقتحم الباب أول واحد لما سمع الصراخ", "brave"],
+
+  ["تضحك لين تبكي من النكت", "comic"],
+
+  ["اضحك وخلها نكتة، ما فيه شي يستاهل الزعل", "comic"],
+
+  ["ليش الدنيا كذا؟ ما أبغى أشوف أحد", "sad"],
+
+  ["أحس الليل طويل وما أقدر أنام من الحزن", "sad"],
+
+  ["وش لو الشركة تفلس بكرة؟ وش بيصير بعدين؟", "worry"],
+
+  ["تخيل لو صار شي لأهلي وش أسوي؟", "worry"],
+
+  ["انا عندي اتصال طوارئ، روحوا ساعدوه قبل ما يتأخر", "kafu"],
+
+  ["ارتاح وقت ما تحتاج، أنا جاهز أساعد", "kafu"]
+
+];
+
+
+
+var LABEL_AR = { brave: "شجاع", comic: "كوميدي", sad: "حزين", worry: "مهوجس", kafu: "كفو", neutral: "محايد" };
+
+var CHOICES = ["brave", "comic", "sad", "worry", "kafu"];
+
+var THRESHOLD = 0.45; // أقل من هذي الثقة نقول "غير واضح"
+
+  </script>
+
+
+
+  <!-- الخلية 2: النموذج -->
+
+  <section class="cell">
+
+    <div class="gutter"><span class="counter">[2]</span><button class="run" data-run="src-2" aria-label="تشغيل الخلية 2">▶</button></div>
+
+    <div class="body"><pre class="code" data-show="src-2"></pre><div class="out" data-out="src-2"></div></div>
+
+  </section>
+
+  <script type="text/plain" id="src-2">
+
+// ============ الخلية 2: Multinomial Naive Bayes ============
+
+
+
+// تنظيف النص العربي: حذف التشكيل، توحيد الأحرف، وإزالة علامات الترقيم
+
+function normalize(text) {
+
+  return text.replace(/[\u064B-\u0652]/g, "").replace(/[أإآ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي")
+
+    .replace(/[\u060C\u061B\u061F.,!?…"'()\-]/g, " ").toLowerCase().trim();
+
+}
+
+
+
+// تحويل النص لميزات: كلمات مفردة + كلمتين متتاليتين، والإيموجي كل واحد لحاله
+
+function tokenize(text) {
+
+  var spaced = normalize(text).replace(/([\u{1F300}-\u{1FAFF}\u2600-\u27BF])/gu, " $1 ");
+
+  var words = spaced.split(/\s+/).filter(function (w) { return w.length > 0; });
+
+  var tokens = words.slice();
+
+  // لوب for: يبني الكلمتين المتتاليتين
+
+  for (var i = 0; i < words.length - 1; i++) tokens.push(words[i] + "_" + words[i + 1]);
+
+  return tokens;
+
+}
+
+
+
+// تدريب النموذج: نعد كل ميزة لكل تصنيف ونعد عدد الأمثلة لكل تصنيف
+
+function trainNB(data) {
+
+  var m = { classes: [], docCount: {}, wordCount: {}, totalWords: {}, vocab: {}, N: data.length };
+
+  // لوب forEach: يمر على كل مثال
+
+  data.forEach(function (row) {
+
+    var label = row[1];
+
+    // شرط: أول مرة نشوف التصنيف نجهز له جداول العد
+
+    if (!m.wordCount[label]) { m.wordCount[label] = {}; m.totalWords[label] = 0; m.docCount[label] = 0; m.classes.push(label); }
+
+    m.docCount[label]++;
+
+    tokenize(row[0]).forEach(function (t) {
+
+      m.vocab[t] = true;
+
+      m.wordCount[label][t] = (m.wordCount[label][t] || 0) + 1;
+
+      m.totalWords[label]++;
+
+    });
+
+  });
+
+  m.V = Object.keys(m.vocab).length;
+
+  return m;
+
+}
+
+
+
+// لوغاريتم احتمال ميزة داخل تصنيف مع Laplace smoothing (ما يصير الاحتمال صفر)
+
+function logP(m, label, t) {
+
+  return Math.log(((m.wordCount[label][t] || 0) + 1) / (m.totalWords[label] + m.V));
+
+}
+
+
+
+// حساب احتمال كل تصنيف: نجمع اللوغاريتمات ثم softmax لتحويلها لنسب
+
+function predictNB(m, tokens) {
+
+  var scores = {};
+
+  m.classes.forEach(function (c) {
+
+    var s = Math.log(m.docCount[c] / m.N);
+
+    // شرط: نتجاهل الميزات اللي ما شافها النموذج
+
+    tokens.forEach(function (t) { if (m.vocab[t]) s += logP(m, c, t); });
+
+    scores[c] = s;
+
+  });
+
+  var max = Math.max.apply(null, m.classes.map(function (c) { return scores[c]; }));
+
+  var sum = 0, probs = {};
+
+  m.classes.forEach(function (c) { probs[c] = Math.exp(scores[c] - max); sum += probs[c]; });
+
+  m.classes.forEach(function (c) { probs[c] /= sum; });
+
+  return probs;
+
+}
+
+
+
+// التصنيف صاحب أعلى احتمال
+
+function argmax(probs) {
+
+  return Object.keys(probs).reduce(function (a, b) { return probs[b] > probs[a] ? b : a; });
+
+}
+
+
+
+// تحليل نص: إذا أعلى احتمال أقل من الحد نقول "غير واضح"
+
+function analyze(text) {
+
+  var probs = predictNB(MODEL, tokenize(text));
+
+  var label = argmax(probs);
+
+  return { label: label, prob: probs[label], probs: probs, uncertain: probs[label] < THRESHOLD };
+
+}
+
+
+
+// تدريب النموذج على البيانات الحالية
+
+var MODEL = trainNB(DATA);
+
+  </script>
+
+
+
+  <!-- الخلية 3: اللعبة -->
+
+  <section class="cell">
+
+    <div class="gutter"><span class="counter">[3]</span><button class="run" data-run="src-3" aria-label="تشغيل الخلية 3">▶</button></div>
+
+    <div class="body"><pre class="code" data-show="src-3"></pre><div class="out" data-out="src-3"></div></div>
+
+  </section>
+
+  <script type="text/plain" id="src-3">
+
+// ============ الخلية 3: منطق اللعبة ============
+
+// الحالة: الجولة، النقاط، السلسلة، والمرحلة (q سؤال، r نتيجة، end نهاية)
+
+var G = {};
+
+
+
+// خلط عشوائي (Fisher-Yates)
+
+function shuffle(arr) {
+
+  var a = arr.slice();
+
+  // لوب for من النهاية: يبدل كل عنصر بعنصر عشوائي قبله
+
+  for (var i = a.length - 1; i > 0; i--) {
+
+    var j = Math.floor(Math.random() * (i + 1));
+
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+
+  }
+
+  return a;
+
+}
+
+
+
+// بداية لعبة جديدة
+
+function startGame() {
+
+  G = { round: 0, total: PUZZLES.length, score: 0, ai: 0, streak: 0, order: shuffle(PUZZLES), phase: "q", current: null, last: null, taught: false };
+
+  G.current = G.order[0];
+
+  renderPanel();
+
+}
+
+
+
+// اختيار اللاعب: نحسب نقاطه ونقاط النموذج
+
+function guess(label) {
+
+  if (G.phase !== "q") return;
+
+  var correct = label === G.current[1];
+
+  // شرط: النقاط تزيد مع السلسلة الصحيحة، والسلسلة تنكسر عند الغلط
+
+  if (correct) { G.streak++; G.score += 10 + (G.streak - 1) * 2; } else { G.streak = 0; }
+
+  var a = analyze(G.current[0]);
+
+  // النموذج يكسب إذا توقع الصح بثقة
+
+  var aiOk = !a.uncertain && a.label === G.current[1];
+
+  if (aiOk) G.ai += 10;
+
+  G.last = { guess: label, correct: correct, ai: a, aiOk: aiOk, gained: correct ? 10 + (G.streak - 1) * 2 : 0 };
+
+  G.phase = "r";
+
+  renderPanel();
+
+}
+
+
+
+// تعليم النموذج: نضيف الجملة بالإجابة الصح ونعيد التدريب
+
+function teach() {
+
+  if (G.taught) return;
+
+  DATA.push([G.current[0], G.current[1]]);
+
+  MODEL = trainNB(DATA);
+
+  G.taught = true;
+
+  renderPanel();
+
+}
+
+
+
+// الجولة التالية أو النهاية
+
+function next() {
+
+  G.round++;
+
+  if (G.round >= G.total) { G.phase = "end"; }
+
+  else { G.phase = "q"; G.current = G.order[G.round]; G.last = null; G.taught = false; }
+
+  renderPanel();
+
+}
+
+
+
+// رسم اللوحة كاملة حسب المرحلة
+
+function renderPanel() {
+
+  var shown = Math.min(G.round + 1, G.total);
+
+  var board = '<div class="board"><div>نقاطك<b>' + G.score + '</b></div><div>نقاط النموذج<b>' + G.ai + '</b></div><div>الجولة<b>' + shown + '/' + G.total + '</b></div></div>';
+
+  var body = "";
+
+  if (G.phase === "end") {
+
+    var verdict = G.score > G.ai ? "فزت على النموذج!" : G.score < G.ai ? "النموذج فاز هذي المرة." : "تعادلتم!";
+
+    body = '<p><b>انتهت اللعبة</b></p><p>' + verdict + '</p><div class="row"><button class="btn primary" onclick="startGame()">العب مرة ثانية</button></div>';
+
+  } else if (G.phase === "q") {
+
+    var buttons = CHOICES.map(function (c) { return '<button class="btn" onclick="guess(\'' + c + '\')">' + LABEL_AR[c] + '</button>'; }).join("");
+
+    body = '<div class="quote">"' + G.current[0] + '"</div><p>وش الشخصية؟</p><div class="choices">' + buttons + '</div>';
+
+  } else {
+
+    var L = G.last, aiText = L.ai.uncertain
+
+      ? "النموذج قال: غير واضح (ثقة " + Math.round(L.ai.prob * 100) + "%)"
+
+      : "النموذج توقع: " + LABEL_AR[L.ai.label] + " (ثقة " + Math.round(L.ai.prob * 100) + "%)";
+
+    var msg = L.correct ? '<span class="ok">إجابتك صح! +' + L.gained + ' نقطة</span>'
+
+                        : '<span class="bad">إجابتك غلط. الصح: ' + LABEL_AR[G.current[1]] + '</span>';
+
+    var teachBtn = (!L.aiOk && !G.taught) ? '<button class="btn" onclick="teach()">علّم النموذج الإجابة الصح</button>' : "";
+
+    var note = G.taught ? '<p class="ok">تم، النموذج تعلّم من هذي الجملة.</p>' : "";
+
+    body = '<div class="quote">"' + G.current[0] + '"</div><div class="result">' + msg + '<br>' + aiText + '</div>' + note +
+
+           '<div class="row">' + teachBtn + '<button class="btn primary" onclick="next()">' + (G.round + 1 >= G.total ? "شوف النتيجة" : "الجولة التالية") + '</button></div>';
+
+  }
+
+  document.getElementById("game").innerHTML = board + body;
+
+}
+
+
+
+// الجزء الظاهر: نرسم حاوية اللعبة داخل مخرجات الخلية ونبدأ
+
+render('<div id="game"></div>');
+
+startGame();
+
+  </script>
+
+
+
+  <!-- الخلية 4: كتابة الشخصية وتحليلها -->
+
+  <section class="cell">
+
+    <div class="gutter"><span class="counter">[4]</span><button class="run" data-run="src-4" aria-label="تشغيل الخلية 4">▶</button></div>
+
+    <div class="body"><pre class="code" data-show="src-4"></pre><div class="out" data-out="src-4"></div></div>
+
+  </section>
+
+  <script type="text/plain" id="src-4">
+
+// ============ الخلية 4: اكتب شخصية وحللها ============
+
+
+
+// تحليل الشخصية اللي كتبها المستخدم وعرض النسب
+
+function analyzeInput() {
+
+  var text = document.getElementById("ci").value.trim();
+
+  if (!text) { alert("اكتب شي أولاً"); return; }
+
+  var a = analyze(text);
+
+  var bars = MODEL.classes.map(function (c) {
+
+    var pct = Math.round(a.probs[c] * 100);
+
+    return '<div class="bar"><span>' + LABEL_AR[c] + ' ' + pct + '%</span><div class="track"><div class="fill" style="width:' + pct + '%"></div></div></div>';
+
+  }).join("");
+
+  var verdict = a.uncertain ? "غير واضح (ثقة " + Math.round(a.prob * 100) + "%)" : LABEL_AR[a.label] + " (ثقة " + Math.round(a.prob * 100) + "%)";
+
+  document.getElementById("ci-out").innerHTML = '<p><b>التحليل:</b> ' + verdict + '</p>' + bars;
+
+  // نحدد التصنيف المتوقع في القائمة تلقائياً
+
+  document.getElementById("ci-label").value = a.label;
+
+}
+
+
+
+// إضافة الشخصية للتدريب بالتصنيف اللي يختاره المستخدم
+
+function addCharacter() {
+
+  var text = document.getElementById("ci").value.trim();
+
+  var label = document.getElementById("ci-label").value;
+
+  if (!text) { alert("اكتب شي أولاً"); return; }
+
+  DATA.push([text, label]);
+
+  MODEL = trainNB(DATA);
+
+  document.getElementById("ci-msg").textContent = "تمت الإضافة للتدريب، عدد الأمثلة الحين: " + DATA.length;
+
+}
+
+
+
+// نرسم نموذج الكتابة
+
+var opts = Object.keys(LABEL_AR).map(function (c) { return '<option value="' + c + '">' + LABEL_AR[c] + '</option>'; }).join("");
+
+render('<div class="form-cell">' +
+
+  '<label for="ci">اكتب كلام الشخصية وتصرفاتها</label>' +
+
+  '<textarea id="ci" placeholder="مثال: ما يتأخر عن أي مساعدة، يرد على الكل بأي وقت"></textarea>' +
+
+  '<div class="row"><button class="btn primary" onclick="analyzeInput()">حلّل</button>' +
+
+  '<select id="ci-label">' + opts + '</select>' +
+
+  '<button class="btn" onclick="addCharacter()">أضفها للتدريب</button></div>' +
+
+  '<div id="ci-out" style="margin-top:10px"></div><p id="ci-msg" class="ok"></p></div>');
+
+document.getElementById("stat").textContent = "أمثلة التدريب: " + DATA.length;
+
+  </script>
+
+
+
+  <!-- المرحلة الثالثة: درّب نموذجك بنفسك -->
+
+  <section style="margin-top:28px">
+
+    <h2 style="font-size:18px;margin:0 0 4px">المرحلة الثالثة: درّب نموذجك بنفسك</h2>
+
+    <p style="font-size:14px;color:#5f6368;margin:0 0 6px;line-height:1.8">انسخ كل كود وألصقه في المربع، ثم اضغط شغّل. الصفحة تتأكد إن الكود يستدعي الدالة الصحيحة وتعرض الناتج تحته.</p>
+
+    <div class="tprog"><div id="tbar"></div></div>
+
+    <div id="tsteps"></div>
+
+  </section>
+
+
+
+</main>
+
+
+
+<script>
+
+  // محرك التشغيل: يعرض كود كل خلية ويشغّله من نفس المصدر
+
+  function render(html) {
+
+    if (window.__out) window.__out.insertAdjacentHTML("beforeend", html);
+
+  }
+
+  function runCell(srcId) {
+
+    var code = document.getElementById(srcId).textContent;
+
+    var out = document.querySelector('[data-out="' + srcId + '"]');
+
+    window.__out = out;
+
+    out.innerHTML = "";
+
+    try {
+
+      (0, eval)(code);
+
+    } catch (e) {
+
+      out.innerHTML = '<span class="err">خطأ: ' + e.message + '</span>';
+
+    }
+
+  }
+
+  document.querySelectorAll(".run").forEach(function (btn) {
+
+    btn.addEventListener("click", function () { runCell(btn.getAttribute("data-run")); });
+
+  });
+
+  document.querySelectorAll('script[type="text/plain"]').forEach(function (s) {
+
+    var show = document.querySelector('[data-show="' + s.id + '"]');
+
+    if (show) show.textContent = s.textContent.replace(/^\n/, "").replace(/\s+$/, "");
+
+  });
+
+  ["src-1", "src-2", "src-3", "src-4"].forEach(runCell);
+
+</script>
+
+<script>
+
+// ============ المرحلة الثالثة: خطوات التدريب (محاكاة تعليمية) ============
+
+// pattern: يتأكد إن الكود فيه الاستدعاء الصحيح، و output: ناتج مسجّل مسبقاً (أمثلة توضيحية)
+
+var TSTEPS = [
+
+  { title: "الخطوة 1: استدعِ المكتبة", text: "المكتبة اسمها nbtools، استدعيها باسم nb.", hint: "import nbtools as nb\nprint(len(nb.DATA))", pattern: /import\s+nbtools\s+as\s+nb/, output: "60" },
+
+  { title: "الخطوة 2: أضف بيانات كثيرة", text: "ضيف 30 مثال جديد لبيانات التدريب، عشان النموذج يتعلم من أمثلة أكثر.", hint: "more = [\n    (\"يركض لين يوصل للنار ويطلع الناس\", \"brave\"),\n    (\"ما يرجع ورا أي تحدي\", \"brave\"),\n    (\"أول واحد ينزل البحر بالليل\", \"brave\"),\n    (\"يوقف المشكلة قبل ما تكبر\", \"brave\"),\n    (\"يسوي وجه يضحك الكل بدون كلام\", \"comic\"),\n    (\"يقلد الكل وكل الجلسة تضحك\", \"comic\"),\n    (\"ترسل ميمز تخليك تموت من الضحك\", \"comic\"),\n    (\"كل كلمة منه تطلع ضحكة\", \"comic\"),\n    (\"يجلس قدام الشباك ويسمع المطر\", \"sad\"),\n    (\"ما عنده رغبة يطلع من البيت\", \"sad\"),\n    (\"كلامه كله عن الفراق والوحدة\", \"sad\"),\n    (\"يسكت وعيونه حمراء من البكاء\", \"sad\"),\n    (\"يتخيل كل السيناريوهات الخايبة\", \"worry\"),\n    (\"ما يقدر يوقف التفكير بالمستقبل\", \"worry\"),\n    (\"وش لو الرحلة ما صارت؟\", \"worry\"),\n    (\"يفكر بالأسوأ قبل ما يصير شي\", \"worry\"),\n    (\"أي وقت تحتاجه أنا موجود\", \"kafu\"),\n    (\"يرد على الرسالة بسرعة ويساعد\", \"kafu\"),\n    (\"يوصّل الناس للمستشفى بليل\", \"kafu\"),\n    (\"يستقبل الكل ويساعدهم بكل شي\", \"kafu\"),\n    (\"وش رأيك نطلع للغداء؟\", \"neutral\"),\n    (\"الكتاب على الطاولة\", \"neutral\"),\n    (\"أبغى أغير الكرسي\", \"neutral\"),\n    (\"الجوال فاضي من البطارية\", \"neutral\"),\n]\nnb.DATA.extend(more)\nprint(len(nb.DATA))", pattern: /nb\.DATA\s*(\+=|\.extend\()/, output: "تمت إضافة 30 مثال. المجموع الحين: 90" },
+
+  { title: "الخطوة 3: تنظيف النص", text: "استدعِ nb.normalize على جملة فيها همزة وتشكيل.", hint: 'print(nb.normalize("أهلاً، الشِّي"))', pattern: /nb\.normalize\(/, output: "اهلا  الشي" },
+
+  { title: "الخطوة 4: تقطيع النص لميزات", text: "استدعِ nb.tokenize على جملة، وشوف الميزات اللي يطلعها.", hint: 'print(nb.tokenize("ما عليك"))', pattern: /nb\.tokenize\(/, output: "['ما', 'عليك', 'ما_عليك']" },
+
+  { title: "الخطوة 5: التدريب", text: "درّب النموذج على كل البيانات، وخزّنه في model.", hint: 'model = nb.train(nb.DATA)\nprint(model["classes"])', pattern: /model\s*=\s*nb\.train\(/, output: "['brave', 'comic', 'sad', 'worry', 'kafu', 'neutral']" },
+
+  { title: "الخطوة 6: التوقع", text: "جرّب النموذج على جملة جديدة. predict ترجع نسبة كل تصنيف.", hint: 'print(nb.predict(model, nb.tokenize("تخيل لو ما نجحت")))', pattern: /nb\.predict\(\s*model/, output: "{'brave': 0.02, 'comic': 0.01, 'sad': 0.03, 'worry': 0.91, 'kafu': 0.02, 'neutral': 0.01}" },
+
+  { title: "الخطوة 7: تقسيم 80/20", text: "قسّم البيانات: 80% للتدريب و20% للاختبار.", hint: 'sp = nb.split(nb.DATA, 0.8)\nprint({"train": len(sp["train"]), "test": len(sp["test"])})', pattern: /nb\.split\(/, output: "{'train': 72, 'test': 18}" },
+
+  { title: "الخطوة 8: قياس الدقة", text: "درّب على جزء التدريب فقط، وقيّس الدقة على جزء الاختبار.", hint: 'sp = nb.split(nb.DATA, 0.8)\nm = nb.train(sp["train"])\nprint(nb.accuracy(m, sp["test"]))', pattern: /nb\.accuracy\(/, output: "0.83 (مثال توضيحي)" },
+
+  { title: "الخطوة 9: جرّبه بنفسك", text: "غيّر الجملة لأي جملة تبيها، وشوف النموذج وش يتوقع.", hint: 'print(nb.argmax(nb.predict(model, nb.tokenize("اكتب جملتك هنا"))))', pattern: /nb\.argmax\(/, output: "worry (مثال توضيحي)" }
+
+];
+
+
+
+var tPassed = [];
+
+
+
+// بناء خلايا المرحلة الثالثة
+
+function tBuild() {
+
+  document.getElementById("tsteps").innerHTML = TSTEPS.map(function (s, i) {
+
+    return '<div class="tcell locked" id="t-cell-' + i + '">' +
+
+      '<h3>' + s.title + ' <span class="tbadge" id="t-badge-' + i + '">مقفلة</span></h3>' +
+
+      '<p>' + s.text + '</p>' +
+
+      '<div class="row"><button class="btn" onclick="tHint(' + i + ')">زر المساعدة</button></div>' +
+
+      '<div class="thint" id="t-hint-' + i + '">' + tEscape(s.hint) + '</div>' +
+
+      '<div class="row"><button class="btn" onclick="tPaste(' + i + ')">حطه في المربع</button></div>' +
+
+      '<textarea id="t-code-' + i + '" placeholder="الصق الكود هنا"></textarea>' +
+
+      '<div class="row"><button class="btn primary" onclick="tRun(' + i + ')">شغّل</button></div>' +
+
+      '<div class="msg" id="t-msg-' + i + '"></div>' +
+
+      '<div class="tout" id="t-out-' + i + '"></div></div>';
+
+  }).join("");
+
+  tUnlock(0);
+
+}
+
+
+
+function tEscape(s) {
+
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+}
+
+
+
+// فتح خلية
+
+function tUnlock(i) {
+
+  var el = document.getElementById("t-cell-" + i);
+
+  if (el) el.classList.remove("locked");
+
+  document.getElementById("t-badge-" + i).textContent = "جاهزة";
+
+}
+
+
+
+function tHint(i) {
+
+  document.getElementById("t-hint-" + i).classList.toggle("show");
+
+}
+
+
+
+function tPaste(i) {
+
+  document.getElementById("t-code-" + i).value = TSTEPS[i].hint;
+
+}
+
+
+
+// التحقق من الكود ثم عرض الناتج المسجّل
+
+function tRun(i) {
+
+  var code = document.getElementById("t-code-" + i).value;
+
+  var msg = document.getElementById("t-msg-" + i);
+
+  var out = document.getElementById("t-out-" + i);
+
+  if (!TSTEPS[i].pattern.test(code)) {
+
+    msg.innerHTML = '<span class="bad">ما لقيت الاستدعاء الصحيح في الكود. راجع اسم الدالة، أو اضغط زر المساعدة.</span>';
+
+    out.classList.remove("show");
+
+    return;
+
+  }
+
+  msg.innerHTML = '<span class="ok">تمام، الكود صح.</span>';
+
+  out.textContent = TSTEPS[i].output;
+
+  out.classList.add("show");
+
+  tFinish(i);
+
+}
+
+
+
+function tFinish(i) {
+
+  if (tPassed.indexOf(i) === -1) tPassed.push(i);
+
+  document.getElementById("t-cell-" + i).classList.add("done");
+
+  document.getElementById("t-badge-" + i).textContent = "✓ مكتملة";
+
+  document.getElementById("tbar").style.width = Math.round(tPassed.length / TSTEPS.length * 100) + "%";
+
+  if (i + 1 < TSTEPS.length) tUnlock(i + 1);
+
+  else document.getElementById("t-msg-" + i).innerHTML += '<p class="ok" style="margin-top:8px">خلّصت المرحلة الثالثة! درّبت النموذج وجربته بنفسك.</p>';
+
+}
+
+
+
+tBuild();
+
+</script>
+
+</body>
+
+</html>
+
+
